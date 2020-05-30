@@ -14,18 +14,6 @@ import java.util.Set;
  * @author Lemonfish
  */
 public class BaseServlet extends HttpServlet {
-    /**
-     * 用一个set去存储我们要转发的目标
-     **/
-    private static Set<String> set = new HashSet<>();
-
-    // 初始化
-    static {
-        // 添加需要转发的目标即可
-        set.add("hello.jsp");
-    }
-
-
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) {
 
@@ -35,10 +23,6 @@ public class BaseServlet extends HttpServlet {
         int beginIndex = requestURI.lastIndexOf("/");
         // 3. 获取方法名称
         String methodName = requestURI.substring(beginIndex + 1);
-        // 4. 判断方法名称是否是转发目标，是 -> return ，否 -> 执行方法
-/*        if (set.contains(methodName)) {
-            return;
-        }*/
 
         try {
             /***
